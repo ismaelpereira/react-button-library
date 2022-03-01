@@ -7,9 +7,10 @@ export const ButtonStyle = styled.button<ButtonProps>`
   width: 311px;
   height: 56px;
   cursor: pointer;
+
   ${(props) =>
-    props.color &&
-    css`
+    props.color === "primary" &&
+    `
       background-color: #026c00;
       color: white;
       &:hover {
@@ -24,7 +25,7 @@ export const ButtonStyle = styled.button<ButtonProps>`
     `}
   ${(props) =>
     props.color === "secondary" &&
-    css`
+    `
       background-color: #f7c346;
       color: black;
       &:hover {
@@ -37,13 +38,12 @@ export const ButtonStyle = styled.button<ButtonProps>`
       &:active {
         background-color: #dcac0d;
       }
-    `}
+    `};
 `;
 
 export const TextContainer = styled.div`
   margin: 1em;
-`;
-
-export const Icon = styled.span`
-  margin-left: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 `;
