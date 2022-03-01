@@ -6,7 +6,7 @@ import styled, {
 } from "styled-components";
 import { ButtonProps } from "./button";
 
-const colors: { [key: string]: FlattenSimpleInterpolation } = {
+export const colors: { [key: string]: FlattenSimpleInterpolation } = {
   primary: css`
     background-color: #026c00;
     color: white;

@@ -18,7 +18,7 @@ const Button = ({ color, disabled, icon, ...props }: ButtonProps) => {
     <ButtonStyle disabled={disabled} color={color} {...props} icon={icon}>
       <div>
         {props.label}
-        {icon && <span>{icons[icon]}</span>}
+        {icon && <span aria-label="icon">{icons[icon]}</span>}
       </div>
     </ButtonStyle>
   );
