@@ -1,34 +1,25 @@
 import { ButtonProps } from "./button";
-import { ButtonStyle, TextContainer } from "./style";
+import { ButtonStyle } from "./style";
 import { ReactComponent as ArrowRight } from "../../assets/icons/arrowRight.svg";
 import { ReactComponent as Check } from "../../assets/icons/check.svg";
 import { ReactComponent as Refresh } from "../../assets/icons/refresh.svg";
 
-const Button = ({ label, color, disabled, icon, ...props }: ButtonProps) => {
-  let iconRenderer: JSX.Element | undefined;
+const Button = ({ color, disabled, icon, ...props }: ButtonProps) => {
+  const icons: { [key: string]: JSX.Element | undefined } = {
+    none: undefined,
+    "arrow-right": <ArrowRight />,
+    check: <Check />,
+    refresh: <Refresh />,
+  };
 
-  if (icon === "none") {
-    iconRenderer = undefined;
-  }
-
-  if (icon === "arrow-right") {
-    iconRenderer = <ArrowRight />;
-  }
-
-  if (icon === "check") {
-    iconRenderer = <Check />;
-  }
-
-  if (icon === "refresh") {
-    iconRenderer = <Refresh />;
-  }
+  console.log(icon);
 
   return (
-    <ButtonStyle disabled={disabled} color={color} label={label}>
-      <TextContainer>
-        Text
-        {icon && <span>{iconRenderer}</span>}
-      </TextContainer>
+    <ButtonStyle disabled={disabled} color={color} {...props} icon={icon}>
+      <div>
+        {props.label}
+        {icon && <span>{icons[icon]}</span>}
+      </div>
     </ButtonStyle>
   );
 };

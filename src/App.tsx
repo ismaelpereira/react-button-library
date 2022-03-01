@@ -1,9 +1,9 @@
-import { Children, useEffect, useState } from "react";
+import { useState } from "react";
 import Button from "./components/Button/index";
 
 const App = () => {
   const [color, setColor] = useState("primary");
-  const [icon, setIcon] = useState("none");
+  const [icon, setIcon] = useState<string | undefined>(undefined);
   const [disabled, setDisabled] = useState(false);
 
   return (
@@ -43,8 +43,8 @@ const App = () => {
               type="radio"
               id="none"
               name="icon"
-              checked={icon === "none"}
-              onChange={() => setIcon("none")}
+              checked={icon === undefined}
+              onChange={() => setIcon(undefined)}
               defaultChecked
             />
             <label>None</label>
@@ -110,13 +110,7 @@ const App = () => {
       </form>
 
       <div className="button-container">
-        <Button
-          label="Text"
-          color={color}
-          icon={icon}
-          disabled={disabled}
-          onClick={() => console.log("Hello!")}
-        />
+        <Button label="Text" color={color} icon={icon} disabled={disabled} />
       </div>
     </div>
   );
